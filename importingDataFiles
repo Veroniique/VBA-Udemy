@@ -1,0 +1,38 @@
+'Allows user to select their own file(s) and imports to excel with new sheet
+Public Sub ImportTextFile()
+    Dim TextFile As Workbook
+    Dim OpenFiles() As Variant
+    Dim i As Integer
+    
+    'Function created below - lets user add multiple files
+    OpenFiles = getFiles()
+    
+    'Getting rid of screenflickering
+    Application.ScreenUpdating = False
+    
+    'Loop to paste multiple files
+    For i = 1 To Application.CountA(OpenFiles)
+    
+        'Pushes file into an array
+        Set TextFile = Workbooks.Open(OpenFiles(i))
+        
+        TextFile.Sheets(1).Range("A1").CurrentRegion.Copy
+        Workbooks(1).Activate
+        'Adds new worksheets for each new data file
+        Workbooks(1).Worksheets.Add
+        ActiveSheet.Paste
+        'Rename sheet
+        ActiveSheet.Name = TextFile.Name
+        'Clearing the clipboard
+        Application.CutCopyMode = False
+                
+        TextFile.Close
+    Next i
+    'Screen flicker turned back on
+    Application.ScreenUpdating = True
+End Sub
+
+'Function that lets user pick multiple files to open
+Public Function getFiles() As Variant
+    getFiles = Application.GetOpenFilename(Title:="Select File(s) to Import", MultiSelect:=True)
+End Function
