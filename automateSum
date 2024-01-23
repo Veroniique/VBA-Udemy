@@ -1,0 +1,22 @@
+Public Sub AutomateSum()
+    Dim lastCell As String
+    Dim i As Integer
+    
+    i = 1
+    
+    Do While i <= Worksheets.Count
+        Worksheets(i).Select
+    
+        'selects the F2 cell of the active sheet
+        Range("F2").Select
+        'select the last cell in the column
+        Selection.End(xlDown).Select
+        
+        lastCell = ActiveCell.Address(False, False)
+    
+        ActiveCell.Offset(1, 0).Select
+        ActiveCell.Value = "=SUM(F2:" & lastCell & ")"
+        
+        i = i + 1
+    Loop
+End Sub
