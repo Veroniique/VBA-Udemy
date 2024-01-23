@@ -1,0 +1,57 @@
+Sub AddHeaders()
+'
+' AddHeaders Macro
+' Automate adding headers to the worksheet
+'
+' Keyboard Shortcut: Ctrl+j
+'
+    Range("A1").Select
+    ActiveCell.FormulaR1C1 = "Region"
+    Range("B1").Select
+    ActiveCell.FormulaR1C1 = "Expense"
+    Range("C1").Select
+    ActiveCell.FormulaR1C1 = "Jan"
+    Range("D1").Select
+    ActiveCell.FormulaR1C1 = "Feb "
+    Range("E1").Select
+    ActiveCell.FormulaR1C1 = "Mar"
+    Range("F1").Select
+    ActiveCell.FormulaR1C1 = "Total"
+    Range("A1:F1").Select
+    Range("F1").Activate
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 4.99893185216834E-02
+        .PatternTintAndShade = 0
+    End With
+    With Selection.Font
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = 0
+    End With
+    Selection.Font.Bold = True
+    Selection.Font.Size = 12
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+End Sub
