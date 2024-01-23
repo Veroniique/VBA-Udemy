@@ -1,0 +1,14 @@
+Public Sub FunWithProcedures()
+'declaring variable
+    Dim userInput As String
+    userInput = "21"
+    
+    If userInput > 20 Then
+        ActiveCell.Value = "Access Granted"
+    Else
+        ActiveCell.Value = userInput
+    End If
+    
+'adding input to active cell
+   '(extra)ActiveCell.Value = userInput
+End Sub
